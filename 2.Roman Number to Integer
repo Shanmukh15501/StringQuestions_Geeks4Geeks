@@ -1,0 +1,35 @@
+class Solution:
+    def romanToDecimal(self, S): 
+        # code here
+        S=list(S)
+        temp1=['I','V','X','L','C','D','M']
+        temp2=[1,5,10,50,100,500,1000]
+        temp3=dict(zip(temp1,temp2))
+        sum=0
+        ans=[]
+        for i in range(len(S)-1):
+            if temp3[S[i]]>=temp3[S[i+1]]:
+                ans.append(temp3[S[i]])
+            else:
+                ans.append(-temp3[S[i]])
+        
+        ans.append(temp3[S[-1]])
+        sum=0
+        for i in ans:
+            sum=sum+i
+        return abs(sum)
+            
+
+            
+
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+if __name__=='__main__':
+    t = int(input())
+    for _ in range(t):
+        ob = Solution()
+        S = input()
+        print(ob.romanToDecimal(S))
+# } Driver Code Ends
