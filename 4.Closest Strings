@@ -1,0 +1,21 @@
+Question:-
+
+https://practice.geeksforgeeks.org/problems/closest-strings0611/1/#
+
+Solution:--
+class Solution:
+	def shortestDistance(self, s, word1, word2):
+	    temp=[]
+	    prev=-1
+	    if word1==word2:
+	        return 0
+        for i in range(len(s)):
+            if s[i]==word1 or s[i]==word2:
+                if prev!=-1 and s[prev]!=s[i]:
+                    temp.append(i-prev)
+                prev=i
+        if (len(temp)==0):
+            return -1
+        else:
+            return min(temp)
+            # code here
