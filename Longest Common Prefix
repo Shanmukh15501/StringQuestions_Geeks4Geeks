@@ -1,0 +1,40 @@
+Question-2
+https://practice.geeksforgeeks.org/problems/longest-common-prefix-in-an-array5129/1
+
+Solution
+
+class Solution:
+    def longestCommonPrefix(self, arr, n):
+        arr.sort()
+        x=arr[0]
+        y=arr[-1]
+        cc=0
+        if len(x)<=len(y):
+            cc=len(x)
+        else:
+            cc=len(y)
+        count=0
+        for i in range(cc):
+            if x[i]==y[i]:
+                count=count+1
+            else:
+                break
+        if count==0:
+            return -1
+        else:
+            return x[:count]
+            
+
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+if __name__=='__main__':
+    t=int(input())
+    for _ in range(t):
+        n = int(input())
+        arr = [x for x in input().strip().split(" ")]
+        
+        ob=Solution()
+        print(ob.longestCommonPrefix(arr, n))
+# } Driver Code Ends
