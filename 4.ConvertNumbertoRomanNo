@@ -1,0 +1,40 @@
+Question:-
+https://practice.geeksforgeeks.org/problems/convert-to-roman-no/1#
+
+
+#User function template for Python 3
+
+class Solution:
+    def convertRoman(self, n):
+        temp1=['I','IV','V' ,'IX','X','XL','L','XC','C','CD','D','CM','M']
+        temp2=[1,4,5,9,10,40,50,90,100,400,500,900,1000]
+        temp3=dict(zip(temp2,temp1))
+        ans=[]
+        feasable_num=0
+        n1=n
+        while(n>0):
+            for i in range(len(temp2)):
+                if n>=temp2[i]:
+                    feasable_num=temp2[i]
+                else:
+                    break
+            ans.append(feasable_num)
+            n=n-feasable_num
+        s=''
+        for i in ans:
+            s=s+temp3[i]
+        return s        
+        #Code here
+
+#{ 
+#  Driver Code Starts
+#Initial template for Python 3
+
+if __name__=='__main__':
+    t = int(input())
+    for i in range(t):
+        n = int(input())
+        ob = Solution()
+        print(ob.convertRoman(n))
+# Contributed by: Harshit Sidhwa
+# } Driver Code Ends
