@@ -1,0 +1,48 @@
+Question:-
+
+https://practice.geeksforgeeks.org/problems/encrypt-the-string-21117/1
+
+Solution:-
+#User function Template for python3
+
+class Solution:
+    def encryptString(self, S):
+        S=list(S)
+        # code here
+        prev=-1
+        S.append("$")
+        string_unc=[]
+        string_cc_final=[]
+        for i in range(len(S)):
+            if prev!=-1 and S[prev]!=S[i]:
+                string_unc.append(S[prev])
+            prev=i
+        current=S[0]
+        count=1
+        for i in S[1:]:
+            if i==current:
+                count=count+1
+            else:
+                string_cc_final.append(count)
+                count=1
+                current=i
+        for i in range(len(string_cc_final)):
+            string_cc_final[i]=hex(string_cc_final[i])[2:]
+        string_unc=string_unc[::-1]
+        string_cc_final=string_cc_final[::-1]
+        ans=[j+i for i,j in zip(string_unc,string_cc_final)]
+        ans="".join(ans)
+        return ans
+        
+        
+
+#{ 
+ # Driver Code Starts
+if __name__ == '__main__': 
+    t = int (input ())
+    for _ in range (t):
+        S=input()
+        
+        ob = Solution()
+        print(ob.encryptString(S))
+# } Driver Code Ends
