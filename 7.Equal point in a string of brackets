@@ -1,0 +1,48 @@
+Equal point in a string of brackets
+
+Question:--
+https://practice.geeksforgeeks.org/problems/find-equal-point-in-string-of-brackets2542/1
+
+#User function Template for python3
+def bsearch(lower,end,S):
+    left,right=0,0
+    while(lower<=end):
+        mid=(lower+end)//2
+        left=S[0:mid].count('(')
+        right=S[mid:len(S)].count(')')
+        if left==right:
+            return mid
+        if left<right:
+            lower=mid+1
+        else:
+            end=mid-1
+    return lower
+class Solution:
+    def findIndex(self,str):
+        # Your code goes here 
+        S=str
+        lower=0
+        end=len(S)-1
+        ans=bsearch(lower,end,S)
+        return ans
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+def main():
+
+    T = int(input())
+
+    while(T > 0):
+        str = input()
+        ob=Solution()
+        print(ob.findIndex(str))
+
+        T -= 1
+
+
+if __name__ == "__main__":
+    main()
+# } Driver Code Ends
