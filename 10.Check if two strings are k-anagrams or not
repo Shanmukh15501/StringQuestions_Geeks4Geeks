@@ -1,0 +1,52 @@
+Question:-https://practice.geeksforgeeks.org/problems/check-if-two-strings-are-k-anagrams-or-not/1
+
+Solution:-
+
+#User function template for Python 3
+from collections import Counter as oc
+from collections import OrderedDict as od
+class Solution:
+    def areKAnagrams(self, str1, str2, k):
+        if len(str1)!=len(str2):
+            return 0
+        ans=[chr(i) for i in range(97,123)]
+        ans1=[0]*26
+        ans3=dict(zip(ans,ans1))
+        ans4=dict(zip(ans,ans1))
+        final={}
+        for i in str1:
+            if i in ans3:
+                ans3[i]=ans3[i]+1
+        for j in str2:
+            if j in ans4:
+                ans4[j]=ans4[j]+1
+        for i in ans:
+            final[i]=ans4[i]-ans3[i]
+        ng=0
+        pg=0
+        for i in final:
+            if final[i]!=0 and final[i]<0:
+                ng=ng+final[i]
+            if final[i]!=0 and final[i]>0:
+                pg=pg+final[i]
+        return k>=pg
+
+            
+        # code here
+
+
+#{ 
+ # Driver Code Starts
+#Initial template for Python 3
+
+if __name__=='__main__':
+    t = int(input())
+    for i in range(t):
+        arr = input().strip().split()
+        k = int(input())
+        ob = Solution()
+        if ob.areKAnagrams(arr[0], arr[1], k):
+            print(1)
+        else:
+            print(0)
+# } Driver Code Ends
